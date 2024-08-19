@@ -1,13 +1,22 @@
-
-    <div class="table-overlay">
-        <table border="1">
-            <tr>
-                <th>Header 1</th>
-                <th>Header 2</th>
-            </tr>
-            <tr>
-                <td>Data 1</td>
-                <td>Data 2</td>
-            </tr>
-        </table>
-    </div>
+<!-- <div class="table-overlay">
+    <table border="1">
+        <tr>
+            <th>Header 1</th>
+            <th>Header 2</th>
+        </tr>
+        <tr>
+            <td>Data 1</td>
+            <td>Data 2</td>
+        </tr>
+    </table>
+</div> -->
+<div class="table-overlay">
+    <table border="1">
+        <tr>
+            <th *ngFor="let header of data.headers">{{ header }}</th>
+        </tr>
+        <tr *ngFor="let row of data.body">
+            <td *ngFor="let cell of row">{{ cell }}</td>
+        </tr>
+    </table>
+</div>

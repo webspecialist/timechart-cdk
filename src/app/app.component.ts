@@ -370,41 +370,16 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   // this.handleClick(event);
-  // this.storedEvent = event;
-  // console.log(event)
   ngOnInit(): void {
-    this.renderer.listen('document', 'click', (event: MouseEvent) => {
-      this.showOverlay(event);
-    });
+    // this.renderer.listen('document', 'click', (event: MouseEvent) => {
+    //   this.showOverlay(event);
+    // });
   }
 
   ngAfterViewInit() {
     this.height = this.appRoot.nativeElement.offsetHeight;
     // console.log('App-root height:', height);
   }
-
-  // ngOnInit(): void {
-  //   const elements = document.getElementsByClassName('type-covid');
-
-  //   for (let i = 0; i < elements.length; i++) {
-  //     this.renderer.listen(elements[i], 'click', (event: MouseEvent) => {
-  //       console.log(event)
-  //       this.showOverlay(event);
-  //     });
-  //   }
-  // }
-
-  // selements: any;
-  // ngOnInit(): void {
-  //   const elements = document.getElementsByClassName('type-new-div');
-  //   console.log(elements);
-  //   this.selements = elements;
-  //   // for (let i = 0; i < elements.length; i++) {
-  //   //   this.renderer.listen(elements[i], 'click', (event: MouseEvent) => {
-  //   //     this.myClick(event);
-  //   //   });
-  //   // }
-  // }
 
   myClick(event: MouseEvent): void {
     console.log(event);
@@ -440,29 +415,17 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.overlayRef.detach();
       return;
     }
-    // const target = document.querySelector('.type-new-div');
+
     const target = event.target as HTMLElement;
-    //
-    // const rect = target.getBoundingClientRect();
-    console.log(event);
-    console.log(this.height);
-    // console.log(this.appRoot.nativeElement.offsetHeight);
-    // console.log(window.screenX, window.scrollY)
+    
+    if (!target.classList.contains('blockade-title')) {
+      return;
+    }
+
     const positionStrategy = this.overlay.position()
       .global()
-      // .left(`${rect.left}px`)
-      // .top(`${rect.bottom }px`);
       .left(`${event.x}px`)
       .top(`${event.y - this.height}px`);
-    // const positionStrategy = this.overlay.position()
-    //   .flexibleConnectedTo(new ElementRef(target))
-    //   .withPositions([{
-    //     originX: 'center',
-    //     originY: 'bottom',
-    //     overlayX: 'center',
-    //     overlayY: 'top',
-    //     offsetY: 1
-    //   }]);
 
     if (this.overlayRef) {
       this.overlayRef.dispose();
@@ -471,7 +434,17 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.overlayRef = this.overlay.create({ positionStrategy });
 
     const tablePortal = new ComponentPortal(TableOverlayComponent);
-    this.overlayRef.attach(tablePortal);
+    // this.overlayRef.attach(tablePortal);
+    const componentRef = this.overlayRef.attach(tablePortal);
+
+    const dummyData = {
+      headers: ['Header 1', 'Header 2'],
+      body: [
+        ['Data 1', 'Data 2'],
+        ['Data 3', 'Data 4'],
+      ]
+    }
+    componentRef.instance.data = dummyData;
   }
 
 
@@ -523,3 +496,12 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 // startDate = DateTime.fromISO(`${this.currentYear}-05-01`);
 // endDate = DateTime.fromISO(`${this.currentYear}-08-31`);
+// const positionStrategy = this.overlay.position()
+    //   .flexibleConnectedTo(new ElementRef(target))
+    //   .withPositions([{
+    //     originX: 'center',
+    //     originY: 'bottom',
+    //     overlayX: 'center',
+    //     overlayY: 'top',
+    //     offsetY: 1
+    //   }]);

@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class TableOverlayComponent {
   @Input() clickedElement!: HTMLElement;
+  @Input() data: any;
 }

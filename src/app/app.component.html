@@ -28,7 +28,7 @@
     </div>
     <div class="overlay-container">
       <ng-time-chart [groups]="groups" [startDate]="startDate" [endDate]="endDate"
-        [layoutStrategy]="tiledLayoutStrategy">
+        [layoutStrategy]="tiledLayoutStrategy" (click)="handleClickOnItem($event)">
       </ng-time-chart>
     </div>
     <!-- [layoutStrategy]="tiledLayoutStrategy" (click)="handleClickOnItem($event)"> -->
