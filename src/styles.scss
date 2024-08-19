@@ -1,1 +1,79 @@
 /* You can add global styles to this file, and also import other style files */
+.type-covid {
+    border-color: #cb1ec2;
+    background-color: lighten(#3e1ecb, 35%);
+
+    .blockade-day {
+        background-color: #5b1ecb;
+    }
+}
+
+// .calendar-showcase {
+//     width: 33%;
+//     float: left;
+
+//     &.none {
+//         .label-bar {
+//             display: none;
+//         }
+//     }
+// }
+.timetable {
+    min-height: 400px;
+}
+
+.type-no-visibility {
+    border-color: #0d550a;
+    background-color: lighten(#0d550a, 35%);
+
+    .blockade-day {
+        background-color: #0d550a;
+    }
+
+    .blockade-title {
+        // color: lighten(#0d550a, 35%);
+        height: 20px;
+    }
+}
+
+/* Styles for the table */
+.table-overlay {
+    position: relative;
+    // width: 100%;
+    border-collapse: collapse;
+
+    table {
+        width: 100%;
+        border: 1px solid #ddd;
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    }
+}
+
+// .overlay-container {
+.overlay-container, .cdk-overlay-container {
+    position: fixed;
+    z-index: 1000;
+    // background-color: white;
+    // box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 16px;
+    // width: 300px;
+    // width: 100%
+}
+// .cdk-overlay-container {
+//     width: 300px;
+// }

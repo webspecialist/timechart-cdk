@@ -1,0 +1,33 @@
+.outer-plot {
+  // border: solid 1px red;
+  text-align: center;
+  overflow-x: auto;
+}
+#plot-container{
+  // width: 2300px;
+  // width: 1600px;
+  // border: solid 3px green;
+  // height: 100px;
+  display: inline-block;
+  text-align: center;
+}
+
+// .rotate-90 {
+//   transform: rotate(90deg);
+
+//   svg {
+//     stroke: firebrick;
+//   }
+// }
+.rotate-90 {
+  --stroke-color: blue;
+  svg {
+    --stroke-color: blue;
+    transform: rotate(90deg);
+    stroke: blue !important;
+  }
+}
+
+// .rotate-90 ::ng-deep svg {
+//   stroke: blue !important;
+// }
