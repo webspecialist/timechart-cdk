@@ -73,7 +73,9 @@
     padding: 16px;
     // width: 300px;
     // width: 100%
+    max-width: 100%;
 }
-// .cdk-overlay-container {
-//     width: 300px;
-// }
+.cdk-overlay-container {
+    width: 300px;
+
+}

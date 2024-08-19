@@ -445,7 +445,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     //
     // const rect = target.getBoundingClientRect();
     console.log(event);
-    // console.log(this.height);
+    console.log(this.height);
     // console.log(this.appRoot.nativeElement.offsetHeight);
     // console.log(window.screenX, window.scrollY)
     const positionStrategy = this.overlay.position()
@@ -453,7 +453,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       // .left(`${rect.left}px`)
       // .top(`${rect.bottom }px`);
       .left(`${event.x}px`)
-      .top(`${event.y}px`);
+      .top(`${event.y - this.height}px`);
     // const positionStrategy = this.overlay.position()
     //   .flexibleConnectedTo(new ElementRef(target))
     //   .withPositions([{
@@ -476,8 +476,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
   handleClickOnItem(event: Event) {
-    console.log(event.target);
-    // this.showOverlay(event);
+    // console.log(event.target);
+    this.showOverlay(event);
   }
 
   handleClick(event: MouseEvent): void {
