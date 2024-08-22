@@ -1,0 +1,114 @@
+@import "../../../styles/1_settings/variables";
+@import "../../../styles/6_components/sidebar";
+@import "../../../styles/5_objects/day";
+
+:host{
+  display: contents;
+}
+
+.timetable {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+
+.timetable-header {
+  display: flex;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  .year-selector {
+    box-sizing: border-box;
+    height: $header-height;
+    max-height: $header-height;
+    position: sticky;
+    left: 0;
+
+    h3 {
+      margin-left: 4px;
+      margin-right: 4px;
+    }
+  }
+
+  .calendar-header {
+    height: $header-height;
+    max-height: $header-height;
+    background-color: white;
+  }
+}
+
+.months {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+
+.month {
+  border: solid 1px $gray-dark;
+  border-left-width: 0;
+  flex: auto;
+  box-sizing: border-box;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.month:first-child {
+  border-left-width: 1px;
+}
+
+.week-offset {
+  border-right: solid $gray-dark 1px;
+  box-sizing: border-box;
+}
+
+.weeks {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+
+.week {
+  border: 0 solid;
+  border-right-width: 1px;
+  text-align: center;
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+.week:first-child {
+  border-left-width: 1px;
+}
+
+.days {
+  display: flex;
+  flex-direction: row;
+}
+
+.day {
+  box-sizing: border-box;
+  border: solid 1px $gray-dark;
+  border-left-width: 0;
+  min-width: $day-width;
+  display: inline-block;
+  text-align: center;
+  margin: 0;
+  font-size: 10px;
+}
+
+.day:first-child {
+  border-left-width: 1px;
+}
+
+.today {
+  background-color: $brand-primary;
+  position: relative;
+}

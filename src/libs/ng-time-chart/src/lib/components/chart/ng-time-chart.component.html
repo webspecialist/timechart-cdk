@@ -1,0 +1,51 @@
+<div class="timetable">
+  <div class="timetable-header"
+       [style.width.px]="(durationInDays$ | async) * DAY_WIDTH">
+    <div class="year-selector label-bar">
+      <div *ngIf="(showYearSpinner$() | async) && (currentYear$ | async) as currentYear">
+        <h3 style="display: inline-block; cursor: pointer" (click)="changeYear(currentYear -1)">&lt; </h3>
+        <h1 style="display: inline-block">{{currentYear}}</h1>
+        <h3 style="display: inline-block; cursor: pointer" (click)="changeYear(currentYear + 1)"> &gt;</h3>
+      </div>
+    </div>
+    <div class="calendar-header"
+         [style.width.px]="(durationInDays$ | async) * DAY_WIDTH">
+      <div class="months">
+        <div *ngFor="let month of months$ | async"
+             [style.width.px]="month.days * DAY_WIDTH"
+             [style.max-width.px]="month.days * DAY_WIDTH"
+             class="month">
+          {{month.startDate.toFormat('MMMM yyyy')}}
+        </div>
+      </div>
+      <div class="week-bar">
+        <div class="weeks">
+          <div class="week-offset"
+               *ngIf="(precedingPeriodDaysBeforeFirstWeek$ |async)>0"
+               [style.width.px]="(precedingPeriodDaysBeforeFirstWeek$ | async) * DAY_WIDTH"></div>
+          <div class="week"
+               *ngFor="let week of weeks$ | async"
+               [style.width.px]="week.days * DAY_WIDTH">({{week.startDate.weekNumber}}
+            ){{week.startDate.startOf('week').toFormat('L')}}</div>
+        </div>
+      </div>
+      <div class="days">
+        <ng-container *ngFor="let day of days$ | async">
+          <div class="day today" *ngIf="isToday(day); else normalDay" [ngClass]="{'today': isToday(day)}" #todayMarker>
+            {{day.toFormat('dd')}}
+          </div>
+          <ng-template #normalDay>
+            <div class="day">
+              {{day.toFormat('dd')}}
+            </div>
+          </ng-template>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <ng-time-table-body [groups]="filteredGroups$ | async"
+                      [today]="today"
+                      [period]="currentPeriod$ | async"
+                      [durationInDays]="durationInDays$ | async"
+                      [layoutStrategy]="layoutStrategy"></ng-time-table-body>
+</div>
